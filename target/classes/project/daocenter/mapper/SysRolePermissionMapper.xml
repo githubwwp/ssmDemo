@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="project.daocenter.dao.SysRolePermissionMapper">
+	<resultMap id="BaseResultMap" type="project.entity.db.SysRolePermissionKey">
+		<id column="role_code" property="roleCode" jdbcType="VARCHAR" />
+		<id column="p_code" property="pCode" jdbcType="VARCHAR" />
+	</resultMap>
+	<delete id="deleteByPrimaryKey" parameterType="project.entity.db.SysRolePermissionKey">
+		delete from sys_role_permission
+		where role_code = #{roleCode,jdbcType=VARCHAR}
+		and p_code = #{pCode,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="project.entity.db.SysRolePermissionKey">
+		insert into sys_role_permission (role_code, p_code)
+		values (#{roleCode,jdbcType=VARCHAR}, #{pCode,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="project.entity.db.SysRolePermissionKey">
+		insert into sys_role_permission
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="roleCode != null">
+				role_code,
+			</if>
+			<if test="pCode != null">
+				p_code,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="roleCode != null">
+				#{roleCode,jdbcType=VARCHAR},
+			</if>
+			<if test="pCode != null">
+				#{pCode,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+</mapper>

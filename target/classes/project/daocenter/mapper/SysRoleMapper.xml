@@ -8,7 +8,6 @@
 	<sql id="Base_Column_List">
 		role_code, role_name
 	</sql>
-
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.String">
 		select
@@ -17,15 +16,12 @@
 		where role_code = #{roleCode,jdbcType=VARCHAR}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-		delete from
-		sys_role
+		delete from sys_role
 		where role_code = #{roleCode,jdbcType=VARCHAR}
 	</delete>
 	<insert id="insert" parameterType="project.entity.db.SysRole">
-		insert into sys_role
-		(role_code, role_name)
-		values (#{roleCode,jdbcType=VARCHAR},
-		#{roleName,jdbcType=VARCHAR})
+		insert into sys_role (role_code, role_name)
+		values (#{roleCode,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR})
 	</insert>
 	<insert id="insertSelective" parameterType="project.entity.db.SysRole">
 		insert into sys_role
@@ -58,7 +54,6 @@
 	<update id="updateByPrimaryKey" parameterType="project.entity.db.SysRole">
 		update sys_role
 		set role_name = #{roleName,jdbcType=VARCHAR}
-		where role_code =
-		#{roleCode,jdbcType=VARCHAR}
+		where role_code = #{roleCode,jdbcType=VARCHAR}
 	</update>
 </mapper>

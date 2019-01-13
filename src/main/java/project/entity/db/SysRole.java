@@ -1,13 +1,9 @@
 package project.entity.db;
 
-import java.io.Serializable;
-
-public class SysRole implements Serializable {
+public class SysRole {
     private String roleCode;
 
     private String roleName;
-
-    private static final long serialVersionUID = 1L;
 
     public String getRoleCode() {
         return roleCode;

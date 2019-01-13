@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="project.daocenter.dao.SysPermissionMapper">
+	<resultMap id="BaseResultMap" type="project.entity.db.SysPermission">
+		<id column="p_code" property="pCode" jdbcType="VARCHAR" />
+		<result column="p_name" property="pName" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		p_code, p_name
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from sys_permission
+		where p_code = #{pCode,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from sys_permission
+		where p_code = #{pCode,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="project.entity.db.SysPermission">
+		insert into sys_permission (p_code, p_name)
+		values (#{pCode,jdbcType=VARCHAR}, #{pName,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="project.entity.db.SysPermission">
+		insert into sys_permission
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="pCode != null">
+				p_code,
+			</if>
+			<if test="pName != null">
+				p_name,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="pCode != null">
+				#{pCode,jdbcType=VARCHAR},
+			</if>
+			<if test="pName != null">
+				#{pName,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="project.entity.db.SysPermission">
+		update sys_permission
+		<set>
+			<if test="pName != null">
+				p_name = #{pName,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where p_code = #{pCode,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="project.entity.db.SysPermission">
+		update sys_permission
+		set p_name = #{pName,jdbcType=VARCHAR}
+		where p_code = #{pCode,jdbcType=VARCHAR}
+	</update>
+</mapper>

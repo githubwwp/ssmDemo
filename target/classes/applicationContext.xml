@@ -70,4 +70,9 @@
 	<!-- 使事务注解可用 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
+
+	<!-- <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+	</bean> -->
+
 </beans>
